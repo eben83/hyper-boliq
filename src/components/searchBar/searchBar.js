@@ -25,7 +25,11 @@ const TextSearch = styled.div`
   justify-content: center;
   
   input {
-    height: 3rem;
+    height: 2.5rem;
+  }
+  
+  button {
+    height: 2.5rem;
   }
 `;
 
