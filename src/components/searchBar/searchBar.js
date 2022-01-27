@@ -21,15 +21,11 @@ function SearchBar () {
 
 const TextSearch = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   
   input {
     height: 3rem;
-  }
-  
-  @media (min-width: 660px) {
-    flex-direction: row;
   }
 `;
 
