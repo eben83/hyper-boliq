@@ -1,15 +1,20 @@
 import './App.css';
 import Header from "./components/header/header";
 import MovieView from "./components/movieView/movieView";
-import SearchBar from "./components/searchBar/searchBar";
+import {StoreProvider, createStore } from "easy-peasy";
+import model from "./model";
 
-const App = () => {
+const store = createStore({model});
+
+function App () {
 
   return (
-    <div className="App">
-      <Header />
-      <MovieView />
-    </div>
+    <StoreProvider store={store}>
+        <div className="App">
+            <Header />
+            <MovieView />
+        </div>
+    </StoreProvider>
   );
 }
 
