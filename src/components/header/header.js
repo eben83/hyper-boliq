@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import logo from '../images/logo.png'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faStar} from "@fortawesome/free-regular-svg-icons";
-import {faAngleDoubleRight, faTimes} from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
 
