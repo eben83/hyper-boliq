@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-regular-svg-icons";
 import {faAngleDoubleRight, faTimes} from "@fortawesome/free-solid-svg-icons";
-import ToggleViewDisplay from "../toggleViewDisplay/toggleViewDisplay";
 
 const Header = () => {
 
