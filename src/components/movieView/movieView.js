@@ -22,7 +22,7 @@ const MovieView = () => {
     }, 1000);
     clearTimeout(timer());
 
-    const movies = useStoreState(state => state.model.movies)
+    const movies = useStoreState(state => state.model.movies.data)
 
     return (
         <>
