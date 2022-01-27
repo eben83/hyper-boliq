@@ -1,13 +1,14 @@
 import './App.css';
 import Header from "./components/header/header";
-import Tiles from './components/tiles/tiles';
+import MovieView from "./components/movieView/movieView";
+import SearchBar from "./components/searchBar/searchBar";
 
+const App = () => {
 
-function App() {
   return (
     <div className="App">
       <Header />
-      <Tiles title='Test' text='Test'/>
+      <MovieView />
     </div>
   );
 }
