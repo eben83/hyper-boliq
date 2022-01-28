@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, ListGroup, ListGroupItem} from "react-bootstrap";
+import {Button, ListGroup } from "react-bootstrap";
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
@@ -24,6 +24,7 @@ const ListItem = ({title, text}) => {
                     <FontAwesomeIcon icon={faTimes} />
                 </CustomClose>
                 <MovieCustomModalView>
+                    <img src='https://picsum.photos/256/186' alt='Image'/>
                     <h1>{title}</h1>
                     <p>{text}</p>
                 </MovieCustomModalView>
