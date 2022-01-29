@@ -4,9 +4,12 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import {useStoreState} from "easy-peasy";
+import FavouriteMovie from "../favouriteMovie/favouriteMovie";
 
 const Header = () => {
 
+    const favourites = useStoreState(state => state.model.favourites)
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -26,6 +29,11 @@ const Header = () => {
                         <FontAwesomeIcon icon={faTimes} />
                     </CustomClose>
                     <p>Favorite</p>
+                    {favourites &&
+                        favourites.map(favourite =>
+                            <FavouriteMovie key={favourite.imdbID} favourite={favourite} />
+                        )
+                    }
                 </Favorite>
             </HeaderContainer>
         </>

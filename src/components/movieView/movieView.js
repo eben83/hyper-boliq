@@ -1,11 +1,11 @@
-import React, {useState} from "react";
-import { useStoreState } from "easy-peasy";
+import React, {useEffect, useState} from "react";
+import { useStoreState, useStoreActions } from "easy-peasy";
 import TileItem from "../tileItem/tileItem";
 import ListItem from "../listItem/listItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faTh} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import {ListGroup} from "reactstrap";
+import { ListGroup } from "reactstrap";
 import SearchBar from "../searchBar/searchBar";
 
 const MovieView = () => {
@@ -27,27 +27,27 @@ const MovieView = () => {
     return (
         <>
 
-            {isCardView &&
+            {movies && isCardView &&
                 <TableListIconSearch>
                     <div onClick={() => timer()}>
-                        <FontAwesomeIcon style={{ transform: rotate, transition: "all 10s ease" }} onClick={handleRotate}  icon={faList} size={"2x"} />
+                        <FontAwesomeIcon style={{ transform: rotate, transition: "all 10s ease", cursor: "pointer" }} onClick={handleRotate}  icon={faList} size={"2x"} />
                         <p>List View</p>
                     </div>
                     <SearchBar />
                 </TableListIconSearch>
             }
             <CardDisplay>
-                {isCardView &&
+                {movies && isCardView &&
                         movies.map(movie =>
-                        <TileItem key={movie.id} title={movie.title} text={movie.text} />
+                        <TileItem key={movie.imdbID} movie={movie} />
                         )
                 }
             </CardDisplay>
 
-            {!isCardView &&
+            {movies && !isCardView &&
                 <TableListIconSearch>
                     <div onClick={() => timer()} className='icon'>
-                        <FontAwesomeIcon style={{ transform: rotate, transition: "all 10s ease" }} onClick={handleRotate} icon={faTh} size={"2x"} />
+                        <FontAwesomeIcon style={{ transform: rotate, transition: "all 10s ease", cursor: "pointer" }} onClick={handleRotate} icon={faTh} size={"2x"} />
                         <p>Grid View</p>
                     </div>
                     <SearchBar />
@@ -56,15 +56,13 @@ const MovieView = () => {
 
            <ListDisplay>
                <ListGroup>
-                   {!isCardView &&
+                   {movies && !isCardView &&
                        movies.map(movie =>
-                           <ListItem key={movie.id} title={movie.title} text={movie.text} />
+                           <ListItem key={movie.imdbID} movie={movie} />
                        )
                    }
                </ListGroup>
            </ListDisplay>
-
-
         </>
     )
 }

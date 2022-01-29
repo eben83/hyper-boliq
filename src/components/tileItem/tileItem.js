@@ -3,21 +3,23 @@ import { Card, Button } from 'react-bootstrap'
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import {useStoreActions} from "easy-peasy";
+import CustomModal from "../customModal/customModal";
 
-const Tiles = ({title, text}) => {
+const Tiles = ({movie}) => {
 
-  const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
   return (
       <>
           <CardContainer>
               <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src="https://picsum.photos/256/186" />
+                  <Card.Img variant="top" src={movie.Poster} />
                   <Card.Body>
-                      <Card.Title>{title}</Card.Title>
+                      <Card.Title>{movie.Title}</Card.Title>
                       <Card.Text>
-                          {text}
+                          {movie.Type}
                       </Card.Text>
-                      <Button onClick={() => setIsOpen(!isOpen)} variant="primary">Go somewhere</Button>
+                      <Button onClick={() => setIsOpen(!isOpen)} variant="primary">View More</Button>
                   </Card.Body>
               </Card>
           </CardContainer>
@@ -26,10 +28,7 @@ const Tiles = ({title, text}) => {
               <CustomClose onClick={() => setIsOpen(!isOpen)}>
                   <FontAwesomeIcon icon={faTimes} />
               </CustomClose>
-              <MovieCustomModalView>
-                  <h1>{title}</h1>
-                  <p>{text}</p>
-              </MovieCustomModalView>
+              <CustomModal movie={movie} />
           </MovieMoreView>
       </>
 )
@@ -76,14 +75,5 @@ const CustomClose = styled.div`
   }
 `;
 
-const MovieCustomModalView = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-`;
 
 export default Tiles

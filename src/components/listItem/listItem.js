@@ -3,15 +3,16 @@ import {Button, ListGroup } from "react-bootstrap";
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import CustomModal from "../customModal/customModal";
 
-const ListItem = ({title, text}) => {
+const ListItem = ({movie}) => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
             <ListContainer>
                 <ListGroup as="ul">
                     <ListGroup.Item as="li" >
-                        {title} - {text}
+                        {movie.Title} - {movie.Type}
                         <span className='d-flex'>
                             <Button onClick={() => setIsOpen(!isOpen)} variant="primary">View More</Button>
                         </span>
@@ -23,11 +24,7 @@ const ListItem = ({title, text}) => {
                 <CustomClose onClick={() => setIsOpen(!isOpen)}>
                     <FontAwesomeIcon icon={faTimes} />
                 </CustomClose>
-                <MovieCustomModalView>
-                    <img src='https://picsum.photos/256/186' alt='Image'/>
-                    <h1>{title}</h1>
-                    <p>{text}</p>
-                </MovieCustomModalView>
+                <CustomModal movie={movie} />
             </MovieMoreView>
         </>
     )
@@ -35,18 +32,6 @@ const ListItem = ({title, text}) => {
 
 const ListContainer = styled.div`
   width: 50rem;
-  background-image: url("https://picsum.photos/256/186") ;
-`;
-
-const ListImage = styled.div`
-  background-image: url("https://picsum.photos/256/186") ;
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
-
-const TitleText = styled.span`
-  font-weight: bold;
-  background-color: #eeeeee;
 `;
 
 const MovieMoreView = styled.div`
