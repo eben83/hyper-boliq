@@ -22,7 +22,7 @@ const ListItem = ({movie}) => {
                 <ListGroup as="ul">
                     <ListGroup.Item as="li" >
                         {movie.Title} - {movie.Type}
-                        <span className='d-flex'>
+                        <span className='d-flex justify-content-center my-3'>
                             <Button onClick={() => modalOpen()} variant="primary">View More</Button>
                         </span>
                     </ListGroup.Item>
@@ -41,14 +41,27 @@ const ListItem = ({movie}) => {
 
 const ListContainer = styled.div`
   width: 50rem;
+  
+  button {
+    background: #2D2C2E;
+    color: #C0A573;
+    :hover{
+      background: #C0A573;
+      color: #2D2C2E;
+    }
+  }
+  
+  @media(max-width: 420px) {
+    width: 100vw;
+  }
 `;
 
 const MovieMoreView = styled.div`
     position: fixed;
-    top: 6.7rem;
+    top: 10rem;
     bottom: 0;
     right: 0;
-    background: slategrey;
+    background: #C0A573;
     width: 100vw;
     z-index: 2;
     list-style: none;
@@ -67,6 +80,8 @@ const MovieMoreView = styled.div`
 const CustomClose = styled.div`
     display: flex;
     justify-content: flex-end;
+    color: #2D2C2E;
+    z-index: 999;
     
     .fa-times {
       cursor: pointer;

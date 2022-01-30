@@ -24,7 +24,7 @@ const Tiles = ({movie}) => {
                   <Card.Body>
                       <Card.Title>{movie.Title}</Card.Title>
                       <Card.Text>
-                          {movie.Type} - {movie.Rated}
+                          {movie.Type}
                       </Card.Text>
                       <Button onClick={() => modalOpen()} variant="primary">View More</Button>
                   </Card.Body>
@@ -44,14 +44,23 @@ const CardContainer = styled.div`
   width: 18rem;
   margin: 2rem;
   color: black;
+
+  button {
+    background: #2D2C2E;
+    color: #C0A573;
+    :hover{
+      background: #C0A573;
+      color: #2D2C2E;
+    }
+  }
 `;
 
 const MovieMoreView = styled.div`
     position: fixed;
-    top: 6.7rem;
+    top: 10rem;
     bottom: 0;
     right: 0;
-    background: slategrey;
+    background: #C0A573;
     width: 100vw;
     z-index: 2;
     list-style: none;
@@ -71,11 +80,14 @@ const MovieMoreView = styled.div`
 const CustomClose = styled.div`
     display: flex;
     justify-content: flex-end;
+    color: #2D2C2E;
+    z-index: 999;
     
     .fa-times {
       cursor: pointer;
       transition: transform 2s ease-in-out;
       font-size: 2rem;
+      color: #2D2C2E;
     }
   :hover .fa-times {
     animation: rotate-icon 2s linear 1;

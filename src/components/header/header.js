@@ -16,28 +16,30 @@ const Header = () => {
     return (
         <>
             <HeaderContainer>
-                <ImageWrapper>
-                    <img src={logo} alt='IMDB Logo'/>
-                </ImageWrapper>
-                <SearchBar />
-                <Favorite show={isOpen}>
-                    <CustomClose onClick={() => setIsOpen(!isOpen)}>
-                        <FontAwesomeIcon icon={faTimes} />
-                    </CustomClose>
-                    <p>Favorite</p>
-                    {favourites &&
-                        favourites.map(favourite =>
-                            <FavouriteMovie key={favourite.imdbID} favourite={favourite} />
-                        )
-                    }
-                </Favorite>
-                <RightMenu>
-                    <IconContainer onClick={() => setIsOpen(!isOpen)}>
-                        <FontAwesomeIcon on className='icon' icon={faStar} />
-                        <p>Favorites</p>
-                    </IconContainer>
-                </RightMenu>
+                <div>
+                    <ImageWrapper>
+                        <img src={logo} alt='IMDB Logo'/>
+                    </ImageWrapper>
 
+                    <Favorite show={isOpen}>
+                        <CustomClose onClick={() => setIsOpen(!isOpen)}>
+                            <FontAwesomeIcon icon={faTimes} />
+                        </CustomClose>
+                        <h6>Favorite</h6>
+                        {favourites &&
+                            favourites.map(favourite =>
+                                <FavouriteMovie key={favourite.imdbID} favourite={favourite} />
+                            )
+                        }
+                    </Favorite>
+                    <RightMenu>
+                        <IconContainer onClick={() => setIsOpen(!isOpen)}>
+                            <FontAwesomeIcon on className='icon' icon={faStar} />
+                            <p>Favorites</p>
+                        </IconContainer>
+                    </RightMenu>
+                </div>
+                <SearchBar />
             </HeaderContainer>
         </>
     )
@@ -45,15 +47,16 @@ const Header = () => {
 
 const HeaderContainer = styled.div`
   display: flex;
-  background-color: red;
-  justify-content: space-evenly;
-  width: 100%;
+  background-color: #2D2C2E;
+  width: 100vw;
+  height: 10rem;
+  
 `;
 
 const ImageWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: start;
+  position: absolute;
+  top: 3rem;
+  left: 2rem;
   img {
     width: 10rem;
     height: auto;
@@ -61,8 +64,13 @@ const ImageWrapper = styled.div`
 `;
 
 const RightMenu = styled.div`
-  display: flex;
-  align-items: center;
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  
+  @media(max-width: 420px) {
+    top: 4rem;
+  }
 `;
 
 const IconContainer = styled.div`
@@ -76,6 +84,7 @@ const IconContainer = styled.div`
     height: 100%;
     margin-right: 2rem;
     transition: transform 2s ease-in-out;
+    color: #C0A573;
   }
   
   p {
@@ -86,6 +95,7 @@ const IconContainer = styled.div`
   }
   :hover p {
     display: block;
+    color: #C0A573
   }
   :hover .icon {
     animation: rotate-icon 2s linear 1;
@@ -102,10 +112,10 @@ const IconContainer = styled.div`
 
 const Favorite = styled.div`
     position: fixed;
-    top: 6.7rem;
+    top: 10rem;
     bottom: 0;
     right: 0;
-    background: slategrey;
+    background: #C0A573;
     width: 250px;
     z-index: 2;
     list-style: none;
@@ -121,6 +131,7 @@ const Favorite = styled.div`
       width: 1rem;
       height: 1rem;
       position: absolute;
+      color: #2D2C2E;
       transition: transform 2s ease-in-out;
     }
     
@@ -128,7 +139,7 @@ const Favorite = styled.div`
       animation: rotate-icon 2s linear 1;
     }
     @media (max-width: 420px) {
-      width: 90vw;
+      width: 100vw;
     }
 `;
 

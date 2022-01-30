@@ -31,13 +31,18 @@ function SearchBar () {
 
 const TextSearch = styled.div`
   display: flex;
-    
+  margin-top: 1rem;
+  margin-left: 1rem;
   input {
     height: 2.5rem;
   }
   
   button {
     height: 2.5rem;
+  }
+  
+  @media(max-width: 420px) {
+    margin-right: 2rem;
   }
 `;
 

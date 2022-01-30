@@ -7,12 +7,11 @@ const CustomModal = ({movie}) => {
 
     const [favMovie, setFavMovie] = useState('')
     const add = useStoreActions(actions => actions.model.addFavourite);
-    const movieDetails = useStoreState(state => state.model.movieDetails)
+    const movieDetail = useStoreState(state => state.model.movieDetails)
 
 
     useEffect(() => {
         setFavMovie(movie)
-        // movieDetails()
     })
 
     const addFavourite = () => {
@@ -23,13 +22,15 @@ const CustomModal = ({movie}) => {
     return (
         <>
             <MovieCustomModalView>
-                <div className='d-flex flex-column flex-md-row m-5 justify-content-center'>
-                    <div className='m-md-5'>
-                        <h1>{movieDetails.Title}</h1>
-                        <p>{movieDetails.Type}</p>
-                        <p>{movieDetails.Year}</p>
-                        <p>{movieDetails.Poster}</p>
-                        <p>{movieDetails.Rated}</p>
+                <div className='d-flex flex-column flex-md-row m-5 mx-auto'>
+                    <ModalImage className='w-50 mx-auto'>
+                        <img src={movieDetail.Poster} alt={movieDetail.Title} />
+                    </ModalImage>
+                    <div className='w-50 mx-auto'>
+                        <h1>{movieDetail.Title}</h1>
+                        <p>{movieDetail.Type}</p>
+                        <p>{movieDetail.Year}</p>
+                        <p>{movieDetail.Plot}</p>
                         <Button variant="primary" onClick={() => addFavourite()}>Favourite</Button>
                     </div>
                 </div>
@@ -40,13 +41,30 @@ const CustomModal = ({movie}) => {
 }
 
 const MovieCustomModalView = styled.div`
+  //position: absolute;
   display: flex;
-  flex-direction: column;
+  margin: 0 auto;
+  //flex-direction: column;
   justify-content: center;
   align-content: center;
-  width: 100%;
-  height: 100%;
   text-align: center;
+
+  button {
+    background: #2D2C2E;
+    color: #C0A573;
+    :hover{
+      background: #C0A573;
+      color: #2D2C2E;
+    }
+  }
+`;
+
+const ModalImage = styled.div`
+  @media(max-width: 420px) {
+    img {
+      width: 3rem;
+    }
+  }
 `;
 
 

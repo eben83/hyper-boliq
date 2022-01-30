@@ -5,19 +5,7 @@ export default {
     favourites: [],
     movieDetails: [],
 
-    addFavourite: action((state, payload) => {
 
-        let oldFavourites = state.favourites;
-        oldFavourites.push(payload);
-        state.favourites = oldFavourites;
-    }),
-
-    remove: action((state, favourite) => {
-        let oldFavourite = state.favourites
-        const index = oldFavourite.findIndex((element) => element.imdbID === favourite.imdbID)
-        oldFavourite.splice(index, 1)
-        state.favourites = oldFavourite
-    }),
 
     fetchMovies: thunk(async (actions, filter) => {
         let url = "https://movie-database-imdb-alternative.p.rapidapi.com/";
@@ -63,7 +51,6 @@ export default {
             });
     }),
 
-    //Actions
     setMovies: action((state, movies) => {
         state.movies = movies
     }),
@@ -72,7 +59,16 @@ export default {
         oldMovieDetail = movie
         state.movieDetails = oldMovieDetail
     }),
+    addFavourite: action((state, payload) => {
+
+        let oldFavourites = state.favourites;
+        oldFavourites.push(payload);
+        state.favourites = oldFavourites;
+    }),
+    remove: action((state, favourite) => {
+        let oldFavourite = state.favourites
+        const index = oldFavourite.findIndex((element) => element.imdbID === favourite.imdbID)
+        oldFavourite.splice(index, 1)
+        state.favourites = oldFavourite
+    }),
 }
-
-
-//
