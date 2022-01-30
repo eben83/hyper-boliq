@@ -8,6 +8,10 @@ function SearchBar () {
 
     const fetchMovies = useStoreActions(actions => actions.model.fetchMovies)
     const [text, setText] = useState('')
+    const search = () => {
+        fetchMovies(text)
+        setText('')
+    }
 
     return (
         <>
@@ -16,7 +20,7 @@ function SearchBar () {
                     <input onBlur={(e) => setText(e.target.value)} />
                 </form>
                 <Button
-                    onClick={() => fetchMovies(text)}
+                    onClick={() => search()}
                     color="primary">
                     Search
                 </Button>

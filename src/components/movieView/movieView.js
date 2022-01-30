@@ -1,12 +1,11 @@
-import React, {useEffect, useState} from "react";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import React, { useState } from "react";
+import { useStoreState } from "easy-peasy";
 import TileItem from "../tileItem/tileItem";
 import ListItem from "../listItem/listItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faTh} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { ListGroup } from "reactstrap";
-import SearchBar from "../searchBar/searchBar";
 
 const MovieView = () => {
 
@@ -22,7 +21,7 @@ const MovieView = () => {
     }, 1000);
     clearTimeout(timer());
 
-    const movies = useStoreState(state => state.model.movies)
+    const movies = useStoreState(state => state.model.movies.Search)
 
     return (
         <>

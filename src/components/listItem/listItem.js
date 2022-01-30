@@ -4,8 +4,17 @@ import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import CustomModal from "../customModal/customModal";
+import {useStoreActions} from "easy-peasy";
 
 const ListItem = ({movie}) => {
+
+    const selectedMovie = useStoreActions(actions => actions.model.movieSelected)
+
+    const modalOpen = () => {
+        setIsOpen(!isOpen)
+        selectedMovie(movie.imdbID)
+    }
+
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
@@ -14,14 +23,14 @@ const ListItem = ({movie}) => {
                     <ListGroup.Item as="li" >
                         {movie.Title} - {movie.Type}
                         <span className='d-flex'>
-                            <Button onClick={() => setIsOpen(!isOpen)} variant="primary">View More</Button>
+                            <Button onClick={() => modalOpen()} variant="primary">View More</Button>
                         </span>
                     </ListGroup.Item>
                 </ListGroup>
             </ListContainer>
 
             <MovieMoreView show={isOpen}>
-                <CustomClose onClick={() => setIsOpen(!isOpen)}>
+                <CustomClose onClick={() => modalOpen()}>
                     <FontAwesomeIcon icon={faTimes} />
                 </CustomClose>
                 <CustomModal movie={movie} />
@@ -67,16 +76,6 @@ const CustomClose = styled.div`
   :hover .fa-times {
     animation: rotate-icon 2s linear 1;
   }
-`;
-
-const MovieCustomModalView = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  width: 100%;
-  height: 100%;
-  text-align: center;
 `;
 
 export default ListItem
