@@ -6,6 +6,7 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import {useStoreState} from "easy-peasy";
 import FavouriteMovie from "../favouriteMovie/favouriteMovie";
+import SearchBar from "../searchBar/searchBar";
 
 const Header = () => {
 
@@ -18,12 +19,7 @@ const Header = () => {
                 <ImageWrapper>
                     <img src={logo} alt='IMDB Logo'/>
                 </ImageWrapper>
-                <RightMenu>
-                    <IconContainer onClick={() => setIsOpen(!isOpen)}>
-                        <FontAwesomeIcon on className='icon' icon={faStar} />
-                        <p>Favorites</p>
-                    </IconContainer>
-                </RightMenu>
+                <SearchBar />
                 <Favorite show={isOpen}>
                     <CustomClose onClick={() => setIsOpen(!isOpen)}>
                         <FontAwesomeIcon icon={faTimes} />
@@ -35,6 +31,13 @@ const Header = () => {
                         )
                     }
                 </Favorite>
+                <RightMenu>
+                    <IconContainer onClick={() => setIsOpen(!isOpen)}>
+                        <FontAwesomeIcon on className='icon' icon={faStar} />
+                        <p>Favorites</p>
+                    </IconContainer>
+                </RightMenu>
+
             </HeaderContainer>
         </>
     )

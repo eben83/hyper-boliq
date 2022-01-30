@@ -13,7 +13,7 @@ function App () {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        window.setTimeout(() => {setIsLoading(false); }, 2500)
+        window.setTimeout(() => {setIsLoading(false); }, 0)
     })
 
   return (

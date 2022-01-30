@@ -33,7 +33,6 @@ const MovieView = () => {
                         <FontAwesomeIcon style={{ transform: rotate, transition: "all 10s ease", cursor: "pointer" }} onClick={handleRotate}  icon={faList} size={"2x"} />
                         <p>List View</p>
                     </div>
-                    <SearchBar />
                 </TableListIconSearch>
             }
             <CardDisplay>
@@ -50,7 +49,6 @@ const MovieView = () => {
                         <FontAwesomeIcon style={{ transform: rotate, transition: "all 10s ease", cursor: "pointer" }} onClick={handleRotate} icon={faTh} size={"2x"} />
                         <p>Grid View</p>
                     </div>
-                    <SearchBar />
                 </TableListIconSearch>
             }
 

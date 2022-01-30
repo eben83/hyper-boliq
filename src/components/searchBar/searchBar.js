@@ -8,9 +8,6 @@ function SearchBar () {
 
     const fetchMovies = useStoreActions(actions => actions.model.fetchMovies)
     const [text, setText] = useState('')
-    // useEffect(() => {
-    //     fetchMovies();
-    // }, [])
 
     return (
         <>
@@ -30,9 +27,7 @@ function SearchBar () {
 
 const TextSearch = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  
+    
   input {
     height: 2.5rem;
   }

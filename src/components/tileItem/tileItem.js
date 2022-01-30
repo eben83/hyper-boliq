@@ -8,6 +8,14 @@ import CustomModal from "../customModal/customModal";
 
 const Tiles = ({movie}) => {
 
+    const moviesSelected = useStoreActions(actions => actions.model.movieSelected)
+    const id = movie.imdbID
+    console.log(id)
+    const modalOpen = () => {
+        setIsOpen(!isOpen)
+        moviesSelected(movie.imdbID)
+    }
+
     const [isOpen, setIsOpen] = useState(false)
   return (
       <>
@@ -17,6 +25,7 @@ const Tiles = ({movie}) => {
                   <Card.Body>
                       <Card.Title>{movie.Title}</Card.Title>
                       <Card.Text>
+                          {movie.imdbID}
                           {movie.Type}
                       </Card.Text>
                       <Button onClick={() => setIsOpen(!isOpen)} variant="primary">View More</Button>
@@ -25,7 +34,7 @@ const Tiles = ({movie}) => {
           </CardContainer>
 
           <MovieMoreView show={isOpen}>
-              <CustomClose onClick={() => setIsOpen(!isOpen)}>
+              <CustomClose onClick={() => modalOpen()}>
                   <FontAwesomeIcon icon={faTimes} />
               </CustomClose>
               <CustomModal movie={movie} />

@@ -7,10 +7,12 @@ const CustomModal = ({movie}) => {
 
     const [favMovie, setFavMovie] = useState('')
     const add = useStoreActions(actions => actions.model.addFavourite);
-    const dispatch = useStoreDispatch()
+    const movieDetails = useStoreState(state => state.model.movieDetail)
+
 
     useEffect(() => {
         setFavMovie(movie)
+
     })
 
     const addFavourite = () => {
@@ -22,13 +24,10 @@ const CustomModal = ({movie}) => {
         <>
             <MovieCustomModalView>
                 <div className='d-flex flex-column flex-md-row m-5 justify-content-center'>
-                    <div>
-                        <img src={movie.Poster}  alt={movie.Title} />
-                    </div>
                     <div className='m-md-5'>
-                        <h1>{movie.Title}</h1>
-                        <p>{movie.Type}</p>
-                        <p>{movie.Year}</p>
+                        <h1>{movieDetails.Title}</h1>
+                        <p>{movieDetails.Type}</p>
+                        <p>{movieDetails.Year}</p>
                         <Button variant="primary" onClick={() => addFavourite()}>Favourite</Button>
                     </div>
                 </div>
