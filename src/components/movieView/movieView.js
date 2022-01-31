@@ -9,10 +9,13 @@ import { ListGroup } from "reactstrap";
 
 const MovieView = () => {
 
-    const [isCardView, setIsCardView] = useState(false)
+    const [isCardView, setIsCardView] = useState(useStoreState(state => state.model.toggleResultsView))
     const [rotateIcon, setRotateIcon] = useState(false)
 
-    const handelView = () => setIsCardView(!isCardView)
+    const handelView = () => {
+        setIsCardView(!isCardView);
+    }
+
     const handleRotate = () => setRotateIcon(!rotateIcon)
     const rotate = rotateIcon ? "rotate(3600deg)" : "rotate(0)"
 

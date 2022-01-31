@@ -25,7 +25,7 @@ const Header = () => {
                         <CustomClose onClick={() => setIsOpen(!isOpen)}>
                             <FontAwesomeIcon icon={faTimes} />
                         </CustomClose>
-                        <h6>Favorite</h6>
+                        <h6>Favourites</h6>
                         {favourites &&
                             favourites.map(favourite =>
                                 <FavouriteMovie key={favourite.imdbID} favourite={favourite} />
@@ -35,7 +35,7 @@ const Header = () => {
                     <RightMenu>
                         <IconContainer onClick={() => setIsOpen(!isOpen)}>
                             <FontAwesomeIcon on className='icon' icon={faStar} />
-                            <p>Favorites</p>
+                            <p>Favourites</p>
                         </IconContainer>
                     </RightMenu>
                 </div>
@@ -91,7 +91,7 @@ const IconContainer = styled.div`
     font-size: 1rem;
     position: absolute;
     right: 1rem;
-    display: none;
+    display: block;
   }
   :hover p {
     display: block;

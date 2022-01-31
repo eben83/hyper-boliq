@@ -24,7 +24,7 @@ const Tiles = ({movie}) => {
                   <Card.Body>
                       <Card.Title>{movie.Title}</Card.Title>
                       <Card.Text>
-                          {movie.Type}
+                          {movie.Type} || {movie.Year}
                       </Card.Text>
                       <Button onClick={() => modalOpen()} variant="primary">View More</Button>
                   </Card.Body>

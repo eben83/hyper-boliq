@@ -4,8 +4,12 @@ export default {
     movies: [],
     favourites: [],
     movieDetails: [],
+    isListView: true,
 
 
+    toggleResultsView: action((state, isListView) => {
+        state.isListView = !state.isListView
+    }),
 
     fetchMovies: thunk(async (actions, filter) => {
         let url = "https://movie-database-imdb-alternative.p.rapidapi.com/";

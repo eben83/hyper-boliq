@@ -20,11 +20,17 @@ const ListItem = ({movie}) => {
         <>
             <ListContainer>
                 <ListGroup as="ul">
-                    <ListGroup.Item as="li" >
-                        {movie.Title} - {movie.Type}
-                        <span className='d-flex justify-content-center my-3'>
-                            <Button onClick={() => modalOpen()} variant="primary">View More</Button>
+                    <ListGroup.Item as="li" className="d-flex w-100">
+                        <span className="justify-content-left w-25">
+                          <img src={movie.Poster} alt={movie.Title} style={{width: '3rem'}} />
+                        </span >
+                        <span className="justify-content-center mt-4 w-50">
+                        <span style={{fontWeight: 'Bold'}}>{movie.Title}</span> || {movie.Type} || {movie.Year}
                         </span>
+                        <span className="justify-content-right w-25 mt-3">
+                          <Button onClick={() => modalOpen()} variant="primary">View More</Button>  
+                        </span>
+                        
                     </ListGroup.Item>
                 </ListGroup>
             </ListContainer>
@@ -42,17 +48,28 @@ const ListItem = ({movie}) => {
 const ListContainer = styled.div`
   width: 50rem;
   
-  button {
+  span > button {
     background: #2D2C2E;
     color: #C0A573;
+    display: flex,
+    justify-content: flex-end; 
+    width: 100%,
+  }
+
+
+  button {
+    margin-left: 2rem;
     :hover{
       background: #C0A573;
       color: #2D2C2E;
     }
   }
-  
   @media(max-width: 420px) {
-    width: 100vw;
+    width: 90vw;
+
+    button {
+      margin-left: 1rem
+    }
   }
 `;
 
