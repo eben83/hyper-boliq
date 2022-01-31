@@ -1,12 +1,12 @@
 import './App.css';
 import Header from "./components/header/header";
 import MovieView from "./components/movieView/movieView";
-import {StoreProvider, createStore } from "easy-peasy";
+import {StoreProvider, createStore, persist } from "easy-peasy";
 import model from "./store/model";
 import {useEffect, useState} from "react";
 import LoadingScreen from "./components/loadingScreen/loadingScreen";
 
-const store = createStore({model});
+const store = createStore(persist({model}));
 
 function App () {
 
