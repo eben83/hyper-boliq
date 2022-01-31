@@ -14,7 +14,7 @@ Once you search for a movie, the search results will be shown in a list view. Yo
 
 Each movie in the search result will allow you to `View More`. 
 
-The `View More` will display more details of the selected movie. Within the details of the moview you are able to mark it as a `Favourite`.
+The `View More` will display more details of the selected movie. Within the details of the movie you are able to mark it as a `Favourite`.
 
 Your `Favourites` can be accessed with the 'Favourites Star' icon on the main screen.
 
